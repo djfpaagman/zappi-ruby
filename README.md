@@ -1,6 +1,6 @@
 # Ruby Zappi
 
-This scripts generates a day to day CSV-like overview of the kWhs charged through your [Zappi V2][2]. It differentiates 
+This scripts generates a day-to-day CSV-like overview of the kWhs charged through your [Zappi V2][2]. It differentiates 
 for two (high and low) tariffs. Example:
 
 ```csv
@@ -29,7 +29,10 @@ You need to set three ENV variables to run the script:
 
 Optionally you can set:
 
-* `UTC_OFFSET` if you want to customize the offset. The default offset is 2, since that's my timezone.
+* `UTC_OFFSET` o customize the timezone offset. The data is in UTC. By default offset is 2, since that's my timezone.
+* `START_DATE` to customize the start date. By default it runs from the start of the current year. Format:
+  YYYY-MM-DD or anything Ruby accepts.
+* `END_DATE` to customize the end date. By default it runs to the end of the current year. Same format as `START_DATE`.
 
 [1]: https://myaccount.myenergi.com/location#products
 [2]: https://www.myenergi.com/zappi-ev-charger/

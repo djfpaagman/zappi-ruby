@@ -1,6 +1,8 @@
 require "./hyperclient.rb"
 
 UTC_OFFSET = ENV.fetch("UTC_OFFSET", 2)
+START_DATE = ENV.fetch("START_DATE", "#{Date.today.year}-1-1")
+END_DATE = ENV.fetch("END_DATE", "#{Date.today.year}-12-31")
 
 def get(path)
   Hyperclient::HTTP.new(
@@ -16,9 +18,9 @@ def get(path)
   ).get
 end
 
-range = (Date.new(2022, 1, 1)..Date.new(2022, 12, 31))
+date_range = Date.parse(START_DATE)..Date.parse(END_DATE)
 
-range.each do |date|
+date_range.each do |date|
   kwh_high = 0
   kwh_low = 0
 
