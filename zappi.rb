@@ -1,21 +1,17 @@
-require "./hyperclient.rb"
+require "./digest_auth_client.rb"
 
 UTC_OFFSET = ENV.fetch("UTC_OFFSET", 2)
 START_DATE = ENV.fetch("START_DATE", "#{Date.today.year}-1-1")
 END_DATE = ENV.fetch("END_DATE", "#{Date.today.year}-12-31")
 
 def get(path)
-  Hyperclient::HTTP.new(
-    path,
-    {
-      base_uri: "https://s18.myenergi.net",
-      auth: {
-        type: :digest,
-        user: ENV["ZAPPI_USERNAME"],
-        password: ENV["ZAPPI_PASSWORD"]
-      },
+  DigestAuthClient.new(
+    base_uri: "https://s18.myenergi.net",
+    auth: {
+      user: ENV["ZAPPI_USERNAME"],
+      password: ENV["ZAPPI_PASSWORD"]
     }
-  ).get
+  ).get(path)
 end
 
 date_range = Date.parse(START_DATE)..Date.parse(END_DATE)
