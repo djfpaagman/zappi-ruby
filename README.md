@@ -27,6 +27,10 @@ You need to set three ENV variables to run the script:
 
 `$ ZAPPI_DEVICE_ID=... ZAPPI_USERNAME=... ZAPPI_PASSWORD=... ruby zappi.rb`
 
+It will put one row per day as in the example above. Easiest is to write the ouput to a file:
+
+`$ ... ruby zappi.rb > zappi.csv`
+
 Optionally you can set:
 
 * `UTC_OFFSET` o customize the timezone offset. The data is in UTC. By default offset is 2, since that's my timezone.
